@@ -3,24 +3,14 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movie_mobx_unit_test/app/core/failures/failures.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/errors/movie_failures.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/model/genres_movies_model.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/repository/movie_repository_interface.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/services/local/genres_movies_cache_service.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/stores/genres_movie_store.dart';
 
-class GenresServiceMock extends Mock implements GenreMoviesCacheService {}
-
-class NoDataFoundMock extends Mock implements NoDataFound {}
-
-class MovieRepositoryMock extends Mock implements IMovieRepository {}
+import '../../../../mocks/mock.dart';
 
 void main() {
   late GenresMovieStore store;
   late GenresServiceMock cache;
   late MovieRepositoryMock repository;
-
-  final List<GenresMoviesModel> listGenres = [
-    GenresMoviesModel(id: 23, name: 'Ação')
-  ];
 
   setUpAll(() {
     cache = GenresServiceMock();

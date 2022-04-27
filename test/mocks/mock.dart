@@ -4,12 +4,27 @@ import 'package:movie_mobx_unit_test/app/core/services/remote/dio_http_client_se
 import 'package:movie_mobx_unit_test/app/modules/movie/model/details_movies_up_comming_model.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/model/genres_movies_model.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/model/movie_model.dart';
+import 'package:movie_mobx_unit_test/app/modules/movie/repository/movie_repository_interface.dart';
+import 'package:movie_mobx_unit_test/app/modules/movie/services/local/genres_movies_cache_service.dart';
+import 'package:movie_mobx_unit_test/app/modules/movie/services/local/movies_cache_service.dart';
+import 'package:movie_mobx_unit_test/app/modules/movie/stores/genres_movie_store.dart';
+import 'package:movie_mobx_unit_test/app/modules/movie/stores/movies_up_comming_store.dart';
 
 class DioMock extends Mock implements Dio {}
 
 class ResponseMock extends Mock implements Response {}
 
 class DioHttpServiceMock extends Mock implements DioHttpServiceImp {}
+
+class MoviesCacheServiceMock extends Mock implements MoviesCacheService {}
+
+class MovieRepositoryMock extends Mock implements IMovieRepository {}
+
+class GenresServiceMock extends Mock implements GenreMoviesCacheService {}
+
+class GenresMovieStoreMock extends Mock implements GenresMovieStore {}
+
+class MovieUpCommingStoreMock extends Mock implements MovieUpCommingStore {}
 
 var movieMap = {
   "adult": false,
@@ -43,7 +58,11 @@ final movieModel = MovieModel(
   video: false,
   voteAverage: 8.1,
   voteCount: 53,
+  backdropPath: 'yGlUHuSUdsfy5GYxW42w95RpIms',
+  posterPath: '/kb0IrVB4bDzBilRNpDv1OPMCs3u.jpg',
 );
+
+final listMovies = [movieModel];
 
 var genreMap = {
   "id": 28,
@@ -54,6 +73,8 @@ var genreModel = GenresMoviesModel(
   id: 28,
   name: "Ação",
 );
+
+final listGenres = [GenresMoviesModel(id: 23, name: 'Ação')];
 
 var detailsMoviesUpCommingMap = {
   "total_pages": 23,

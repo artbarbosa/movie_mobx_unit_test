@@ -2,47 +2,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_mobx_unit_test/app/core/failures/failures.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/errors/movie_failures.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/model/details_movies_up_comming_model.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/model/movie_model.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/repository/movie_repository_interface.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/services/local/movies_cache_service.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/stores/movies_up_comming_store.dart';
 
-class MoviesCacheServiceMock extends Mock implements MoviesCacheService {}
-
-class NoDataFoundMock extends Mock implements NoDataFound {}
-
-class MovieRepositoryMock extends Mock implements IMovieRepository {}
+import '../../../../mocks/mock.dart';
 
 void main() {
   late MovieUpCommingStore store;
   late MoviesCacheServiceMock cache;
   late MovieRepositoryMock repository;
-
-  final List<MovieModel> listMovies = [
-    MovieModel(
-      adult: false,
-      genreIds: [18],
-      id: 670981,
-      originalLanguage: 'es',
-      originalTitle: 'Noche de fuego',
-      overview:
-          "In a mountain town, where corn and poppies grow, the girls wear boyish haircuts and have hiding places underground to escape the threat of being stolen. Ana and her two best friends grow up together, affirming the bonds of their friendship and discovering what it means to be women in a rural town marked by violence. Their mothers train them to flee death, to escape those who turn them into slaves or ghosts. They create their own impenetrable universe, but one day one of the girls doesn’t make it to her hiding place in time.",
-      popularity: 38.082,
-      releaseDate: '2021-09-16',
-      title: 'Prayers for the Stolen',
-      video: false,
-      voteAverage: 8.1,
-      voteCount: 53,
-      backdropPath: 'yGlUHuSUdsfy5GYxW42w95RpIms',
-      posterPath: '/kb0IrVB4bDzBilRNpDv1OPMCs3u.jpg',
-    )
-  ];
-
-  final detail = DetailsMoviesUpCommingModel(
-    totalPages: 23,
-    totalResults: 443,
-  );
 
   setUpAll(() {
     cache = MoviesCacheServiceMock();
@@ -56,7 +24,7 @@ void main() {
   group('MovieStore - fetchMoviesUpComming', () {
     test('Should return List MoviesModel', () async {
       when(() => repository.getDetailsMoviesUpComming())
-          .thenAnswer((_) async => detail);
+          .thenAnswer((_) async => detailsMoviesUpCommingModel);
       when(() => repository.getMoviesUpComming(any()))
           .thenAnswer((_) async => listMovies);
 
