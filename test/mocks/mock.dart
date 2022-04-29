@@ -7,8 +7,6 @@ import 'package:movie_mobx_unit_test/app/modules/movie/model/movie_model.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/repository/movie_repository_interface.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/services/local/genres_movies_cache_service.dart';
 import 'package:movie_mobx_unit_test/app/modules/movie/services/local/movies_cache_service.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/stores/genres_movie_store.dart';
-import 'package:movie_mobx_unit_test/app/modules/movie/stores/movies_up_comming_store.dart';
 
 class DioMock extends Mock implements Dio {}
 
@@ -16,15 +14,11 @@ class ResponseMock extends Mock implements Response {}
 
 class DioHttpServiceMock extends Mock implements DioHttpServiceImp {}
 
-class MoviesCacheServiceMock extends Mock implements MoviesCacheService {}
-
 class MovieRepositoryMock extends Mock implements IMovieRepository {}
 
+class MoviesCacheServiceMock extends Mock implements MoviesCacheService {}
+
 class GenresServiceMock extends Mock implements GenreMoviesCacheService {}
-
-class GenresMovieStoreMock extends Mock implements GenresMovieStore {}
-
-class MovieUpCommingStoreMock extends Mock implements MovieUpCommingStore {}
 
 var movieMap = {
   "adult": false,
